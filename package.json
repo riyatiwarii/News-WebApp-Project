@@ -1,0 +1,21 @@
+{
+  "name": "news-web-app",
+  "version": "1.0.0",
+  "description": "A news web app",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "author": "Riya Tiwari",
+  "license": "ISC",
+  "devDependencies": {
+    "os-browserify": "^0.3.0",
+    "parcel": "^2.8.3",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
