@@ -1,7 +1,6 @@
 require('dotenv').config();
 const API_KEY = process.env.API_KEY;
 const cardsBox = document.querySelector(".cards-append");
-const cards = Array.from(document.querySelectorAll(".col"));
 const newsCategory = Array.from(document.getElementsByClassName("category"));
 const paginationWrapper = document.querySelector(".pagination");
 const tickerListItem = Array.from(document.querySelectorAll(".ticker-list > li"))
@@ -23,10 +22,16 @@ newsCategory.forEach((category) => {
 function fetchNews(currPage, categoryValue, stopPaginationRender) {
   const url = `https://newsapi.org/v2/top-headlines?country=in&page=1&category=${categoryValue}&apiKey=${API_KEY}`;
   async function fetchData(url) {
-    cardsBox.innerHTML = "";
-    const response = await fetch(url);
-    const apiData = await response.json();
-    return apiData;
+    try{
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error ${response.status}`);
+    }
+      const apiData = await response.json();
+      return apiData;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   fetchData(url).then((apiData) => {
@@ -130,9 +135,7 @@ function renderPagination(countPaginationNo, categoryValue) {
     pageItem.addEventListener("click", (e) => {
       const currPage = e.target.innerText;
       fetchNews(currPage, categoryValue, true);
-      wrapper = Array.from(paginationWrapper.querySelectorAll("li"))
-      console.log(wrapper);
-      wrapper.forEach(item => {
+      Array.from(paginationWrapper.querySelectorAll("li")).forEach(item => {
         item.classList.remove("active");
       })
       pageItem.classList.add("active");
