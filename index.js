@@ -30,7 +30,7 @@ function fetchNews(currPage, categoryValue, stopPaginationRender) {
   }
 
   fetchData(url).then((apiData) => {
-    articlesList = apiData.articles;
+    let articlesList = apiData.articles;
     const totalCount = articlesList.length;
     const itemsPerPage = 9;
     const countPaginationNo = Math.ceil(totalCount / itemsPerPage);
