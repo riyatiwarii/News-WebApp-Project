@@ -1,11 +1,13 @@
-require('dotenv').config();
-const API_KEY = process.env.API_KEY;
+// require('dotenv').config();
+// const API_KEY = process.env.API_KEY;
+const API_KEY = '9fe637da989f43728458354b010edede'
 const cardsBox = document.querySelector(".cards-append");
 const newsCategory = Array.from(document.getElementsByClassName("category"));
 const paginationWrapper = document.querySelector(".pagination");
 const tickerListItem = Array.from(document.querySelectorAll(".ticker-list > li"))
 
 newsCategory.forEach((category) => {
+  cardsBox.innerHTML = ""
   category.addEventListener("click", (e) => {
     let categoryValue = e.target.innerText.toLowerCase();
     fetchNews(1, categoryValue);
@@ -134,6 +136,7 @@ function renderPagination(countPaginationNo, categoryValue) {
     }
     pageItem.addEventListener("click", (e) => {
       const currPage = e.target.innerText;
+      cardsBox.innerHTML = ""
       fetchNews(currPage, categoryValue, true);
       Array.from(paginationWrapper.querySelectorAll("li")).forEach(item => {
         item.classList.remove("active");
