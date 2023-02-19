@@ -1,6 +1,5 @@
-// require('dotenv').config();
-// const API_KEY = process.env.API_KEY;
-const API_KEY = '9fe637da989f43728458354b010edede'
+require('dotenv').config();
+const API_KEY = process.env.API_KEY;
 const cardsBox = document.querySelector(".cards-append");
 const newsCategory = Array.from(document.getElementsByClassName("category"));
 const paginationWrapper = document.querySelector(".pagination");
