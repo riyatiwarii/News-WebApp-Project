@@ -22,15 +22,7 @@ newsCategory.forEach((category) => {
 
 function fetchNews(currPage, categoryValue, stopPaginationRender) {
   const url = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=in&page=1&category=${categoryValue}&apiKey=${API_KEY}`;
-  const header = {
-    headers: {
-      mode: 'cors',
-  headers: {
-    'Access-Control-Allow-Origin':'*'
-  }
-    },
-  };
-  async function fetchData(url, header) {
+  async function fetchData(url) {
     try{
       const response = await fetch(url);
       if (!response.ok) {
