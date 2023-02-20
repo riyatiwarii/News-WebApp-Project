@@ -41,7 +41,6 @@ function fetchNews(currPage, categoryValue, stopPaginationRender) {
     const itemsPerPage = 9;
     const countPaginationNo = Math.ceil(totalCount / itemsPerPage);
     if (!stopPaginationRender) {
-      console.log("Hi, I am pagination and I am not getting rendered");
       renderPagination(countPaginationNo, categoryValue);
     } 
     articlesList.forEach((article, index) => {
