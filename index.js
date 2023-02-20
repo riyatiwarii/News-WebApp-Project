@@ -110,7 +110,7 @@ function populateNews(article) {
           </div>
       </div>
       </div>`;
-    card.classList.add('x')
+    card.classList.add('animated')
   cardsBox.appendChild(card);
 }
 
