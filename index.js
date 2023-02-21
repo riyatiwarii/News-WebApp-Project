@@ -24,7 +24,7 @@ function fetchNews(currPage, categoryValue, stopPaginationRender) {
   const url = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=in&page=1&category=${categoryValue}&apiKey=${API_KEY}`;
   async function fetchData(url) {
     try{
-      const response = await fetch(url);
+      const response = await fetch(url, {headers: {"Access-Control-Allow-Headers": "x-requested-with"}});
       if (!response.ok) {
         throw new Error(`HTTP error ${response.status}`);
     }
@@ -36,7 +36,7 @@ function fetchNews(currPage, categoryValue, stopPaginationRender) {
   }
 
   fetchData(url).then((apiData) => {
-    let articlesList = apiData.articles;
+    const articlesList = apiData.articles;
     const totalCount = articlesList.length;
     const itemsPerPage = 9;
     const countPaginationNo = Math.ceil(totalCount / itemsPerPage);
